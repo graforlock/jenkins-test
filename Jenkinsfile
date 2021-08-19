@@ -1,5 +1,3 @@
-def FAILED_STAGE
-
 pipeline {
     agent any
     stages {
@@ -11,7 +9,7 @@ pipeline {
             post {
                 failure {
                     script {
-                        FAILED_STAGE=env.STAGE_NAME
+                        env.FAILED_STAGE=env.STAGE_NAME
                     }
                 }
             }
@@ -23,7 +21,7 @@ pipeline {
         }
         failure {
             script {
-                echo "pipeline failed on ${FAILED_STAGE}"
+                echo "pipeline failed on ${env.FAILED_STAGE}"
             }
         }
     }

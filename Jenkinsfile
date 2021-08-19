@@ -5,6 +5,12 @@ pipeline {
             steps {
                 sh 'npm --version'
             }
+            
+            failure {
+                script {
+                    echo "FAIL!"
+                }
+            }
         }
     }
 }

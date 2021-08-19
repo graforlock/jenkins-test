@@ -6,8 +6,8 @@ pipeline {
                 sh 'exit 1'
             }
             
-            failure {
-                script {
+            post {
+                failure {
                     sh "echo 'FAIL!'"   
                 }
             }

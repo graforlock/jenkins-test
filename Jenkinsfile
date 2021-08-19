@@ -15,12 +15,14 @@ pipeline {
             }
         }
         stage('Test') {
-            stage('Unit Test') {
-                script {
-                    echo "Failing!"
-                    sh 'exit 1'
+            steps { script {
+                stage('Unit Test') {
+                    script {
+                        echo "Failing!"
+                        sh 'exit 1'
+                    }
                 }
-            }
+            }}
         }      
     }
     post {

@@ -11,7 +11,6 @@ pipeline {
                 failure {
                     script {
                         FAILED_STAGE=env.STAGE_NAME
-                        echo 'FAILED!'
                     }
                 }
             }

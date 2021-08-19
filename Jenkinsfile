@@ -8,7 +8,7 @@ pipeline {
             
             post {
                 failure {
-                    sh "echo 'FAIL!'"   
+                    echo 'FAIL!'   
                 }
             }
         }

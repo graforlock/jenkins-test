@@ -3,6 +3,19 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo "Not Failing!"
+                sh 'echo 1'
+            }
+            post {
+                failure {
+                    script {
+                        env.FAILED_STAGE=env.STAGE_NAME
+                    }
+                }
+            }
+        }
+        stage('Test') {
+            script {
                 echo "Failing!"
                 sh 'exit 1'
             }
@@ -13,7 +26,7 @@ pipeline {
                     }
                 }
             }
-        }
+        }        
     }
     post {
         success {

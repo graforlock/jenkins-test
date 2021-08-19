@@ -21,11 +21,11 @@ pipeline {
                         echo "Failing!"
                         sh 'exit 1'
                     }
-                }
-                post {
-                    failure {
-                        script {
-                            env.FAILED_STAGE=env.STAGE_NAME
+                    post {
+                        failure {
+                            script {
+                                env.FAILED_STAGE=env.STAGE_NAME
+                            }
                         }
                     }
                 }

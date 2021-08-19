@@ -23,7 +23,7 @@ pipeline {
         }
         failure {
             script {
-                echo 'pipeline failed on ${FAILED_STAGE}'
+                echo "pipeline failed on ${FAILED_STAGE}"
             }
         }
     }

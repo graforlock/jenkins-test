@@ -16,15 +16,17 @@ pipeline {
         }
         stage('Test') {
             steps { script {
-                stage('Unit Test') {
-                    script {
-                        echo "Failing!"
-                        sh 'exit 1'
-                    }
-                    post {
-                        failure {
-                            script {
-                                env.FAILED_STAGE=env.STAGE_NAME
+                stage('Service A') {
+                    stage('Unit Test') {
+                        script {
+                            echo "Failing!"
+                            sh 'exit 1'
+                        }
+                        post {
+                            failure {
+                                script {
+                                    env.FAILED_STAGE=env.STAGE_NAME
+                                }
                             }
                         }
                     }

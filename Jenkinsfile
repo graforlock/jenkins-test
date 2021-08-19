@@ -15,9 +15,11 @@ pipeline {
             }
         }
         stage('Test') {
-            script {
-                echo "Failing!"
-                sh 'exit 1'
+            stage('Unit Test') {
+                script {
+                    echo "Failing!"
+                    sh 'exit 1'
+                }
             }
             post {
                 failure {
@@ -26,7 +28,7 @@ pipeline {
                     }
                 }
             }
-        }        
+        }      
     }
     post {
         success {

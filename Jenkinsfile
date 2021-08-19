@@ -5,6 +5,7 @@ pipeline {
     stages {
         stage('Build') {
             steps {
+                echo "Failing!"
                 sh 'exit 1'
             }
             post {

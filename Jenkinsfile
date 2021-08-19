@@ -20,7 +20,7 @@ pipeline {
             echo 'whole pipeline successful'
         }
         failure {
-            echo 'pipeline failed on ${env.FAILED_STAGE}'
+            echo 'pipeline failed on ${FAILED_STAGE}'
         }
     }
 }

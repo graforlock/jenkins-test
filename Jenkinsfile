@@ -8,7 +8,9 @@ pipeline {
             
             post {
                 failure {
-                    echo 'FAIL!'   
+                    script {
+                        FAILED_STAGE=env.STAGE_NAME
+                    }
                 }
             }
         }
@@ -18,7 +20,7 @@ pipeline {
             echo 'whole pipeline successful'
         }
         failure {
-            echo 'pipeline failed, at least one step failed'
+            echo 'pipeline failed on ${env.FAILED_STAGE}'
         }
     }
 }

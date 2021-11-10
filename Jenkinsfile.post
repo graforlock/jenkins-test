@@ -1,9 +1,14 @@
 pipeline {
     agent any
+    
+    parameters {
+        string(name: 'AFFECTED_PACKAGES', description: '')
+    }
+    
     stages {
         stage('Happy') {
             steps {
-                echo "Not Failing!"
+                echo "${AFFECTED_PACKAGES}"
                 sh 'echo 1'
             }
             post {

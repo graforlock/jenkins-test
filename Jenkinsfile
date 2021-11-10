@@ -20,7 +20,7 @@ pipeline {
                     stage('Unit Test') {
                         script {
                             echo "Failing!"
-                            sh 'exit 1'
+                            sh 'echo 1'
                         }
                         post {
                             failure {
@@ -37,6 +37,7 @@ pipeline {
     post {
         success {
             echo 'whole pipeline successful'
+            build (job: "Jenkins-post-test", wait: false)
         }
         failure {
             script {

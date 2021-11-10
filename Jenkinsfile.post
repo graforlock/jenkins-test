@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    stages {
+        stage('Happy') {
+            steps {
+                echo "Not Failing!"
+                sh 'echo 1'
+            }
+            post {
+                failure {
+                    script {
+                        env.FAILED_STAGE=env.STAGE_NAME
+                    }
+                }
+            }
+        }     
+    }
+    post {
+        success {
+            echo 'whole post pipeline successful'
+        }
+        failure {
+            script {
+                echo "pipeline failed on ${env.FAILED_STAGE}"
+            }
+        }
+    }
+}

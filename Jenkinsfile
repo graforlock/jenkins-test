@@ -7,16 +7,18 @@ pipeline {
                 sh 'echo 1'
             }
         }
-    }
-    post {
-        success {
-            echo 'whole pipeline successful'
-            script {
+        
+        stage('Build Job') {
+           script {
                 def affectedPackages = readFile('affected-packages.json')
                 build (job: "Jenkins-post-test", wait: false,
                        parameters: [string(name: 'AFFECTED_PACKAGES', value: affectedPackages)])  
             }
-
+        }
+    }
+    post {
+        success {
+            echo 'whole pipeline successful'
         }
         failure {
             script {

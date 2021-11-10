@@ -13,7 +13,7 @@ pipeline {
             echo 'whole pipeline successful'
             def affectedPackages = readFile('affected-packages.json')
             build (job: "Jenkins-post-test", wait: false,
-                   parameters: [string(name: 'AFFECTED_PACKAGES', defaultValue: affectedPackages)]))
+                   parameters: [string(name: 'AFFECTED_PACKAGES', defaultValue: affectedPackages)])
         }
         failure {
             script {

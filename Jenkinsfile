@@ -6,33 +6,7 @@ pipeline {
                 echo "Not Failing!"
                 sh 'echo 1'
             }
-            post {
-                failure {
-                    script {
-                        env.FAILED_STAGE=env.STAGE_NAME
-                    }
-                }
-            }
         }
-        stage('Test') {
-            steps { script {
-                stage('Service A') {
-                    stage('Unit Test') {
-                        script {
-                            echo "Failing!"
-                            sh 'echo 1'
-                        }
-                        post {
-                            failure {
-                                script {
-                                    env.FAILED_STAGE=env.STAGE_NAME
-                                }
-                            }
-                        }
-                    }
-                }
-            }}
-        }      
     }
     post {
         success {

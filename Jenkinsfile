@@ -9,10 +9,12 @@ pipeline {
         }
         
         stage('Build Job') {
-           script {
-                def affectedPackages = readFile('affected-packages.json')
-                build (job: "Jenkins-post-test", wait: false,
+            steps {
+                script {
+                    def affectedPackages = readFile('affected-packages.json')
+                    build (job: "Jenkins-post-test", wait: false,
                        parameters: [string(name: 'AFFECTED_PACKAGES', value: affectedPackages)])  
+                }  
             }
         }
     }

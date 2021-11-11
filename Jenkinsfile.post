@@ -1,32 +1,14 @@
 pipeline {
     agent any
-    
+
     parameters {
-        string(name: 'AFFECTED_PACKAGES', description: '')
+        string(defaultValue: "", description: 'K', name: 'B')
     }
-    
+
     stages {
-        stage('Happy') {
-            steps {
-                echo "${AFFECTED_PACKAGES}"
-                sh 'echo 1'
-            }
-            post {
-                failure {
-                    script {
-                        env.FAILED_STAGE=env.STAGE_NAME
-                    }
-                }
-            }
-        }     
-    }
-    post {
-        success {
-            echo 'whole post pipeline successful'
-        }
-        failure {
-            script {
-                echo "pipeline failed on ${env.FAILED_STAGE}"
+        stage('PrintParameter'){
+            steps{
+                sh 'echo ${B}'
             }
         }
     }

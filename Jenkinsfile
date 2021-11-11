@@ -8,7 +8,7 @@ pipeline {
     stages {
         stage('Start'){
             steps{
-                    build job: 'Jenkins-post-test', wait: false, parameters: [string(name: 'B', value: String.valueOf(PARAM))]
+                    build job: 'Jenkins-post-test/main', wait: false, parameters: [string(name: 'B', value: String.valueOf(PARAM))]
             }
         }
     }
